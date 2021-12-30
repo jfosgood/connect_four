@@ -15,27 +15,34 @@ require "../board.rb"
 describe Board do 
   context "#initialize" do 
     
-    it "intitializes board with a grid" do 
-      expect { Board.new({grid: "grid"}) }.not_to raise_error
+    it "intitializes board with a height and width" do 
+      expect { Board.new({height: 6, width: 7}) }.not_to raise_error
     end
     
     it "sets the grid to have 6 rows by default" do
       board = Board.new
-      expect(board.grid).to have(6).things
+      expect(board.grid.length).to eq(6)
     end 
     
     it "creates 7 things in each row by default" do 
       board = Board.new 
-      board.each do | row |
-        expect(row).to have(7).things 
+      board.grid.each do | row |
+        expect(row.length).to eq(7) 
       end 
     end 
   end
   
-  context "#grid" do 
-    it "returns the grid" do 
-      board = Board.new({grid: "grid"})
-      expect(board.grid).to eq "grid"
+  context "#height" do 
+    it "returns the height" do 
+      board = Board.new({height: 6, width: 7})
+      expect(board.height).to eq 6
+    end 
+  end
+  
+  context "#width" do 
+    it "returns the width" do 
+      board = Board.new({height: 6, width: 7})
+      expect(board.width).to eq(7)
     end 
   end
   
