@@ -75,20 +75,20 @@ describe Board do
   context "#game_over" do 
     it "returns :winner if winner? is true" do
       board = Board.new 
-      board.stub(:winner?) { true }
+      board.stub(:win?) { true }
       expect(board.game_over).to eq :winner
     end 
     it "returns :draw if winner? is false and draw? is true" do
       board = Board.new 
-      board.stub(:winner?) { false }
+      board.stub(:win?) { false }
       board.stub(:draw?) { true }
       expect(board.game_over).to eq :draw
     end 
     it "returns false if winner? and draw? are both false" do 
       board = Board.new 
-      board.stub(:winner?) { false }
+      board.stub(:win?) { false }
       board.stub(:draw?) { false }
-      expect(board.game_over).to be_false
+      expect(board.game_over).to be false
     end 
   end
 end
